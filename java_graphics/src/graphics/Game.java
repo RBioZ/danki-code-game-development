@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
@@ -22,11 +23,18 @@ public class Game extends Canvas implements Runnable {
 	private BufferedImage image;
 	
 	private Spritesheet sheet;
-	private BufferedImage player;
+	private BufferedImage[] player;
+	private int frames = 0;
+	private int maxFrames = 10;
+	private int curAnimation = 0, maxAnimation = 2;
 	
 	public Game() {
 		sheet = new Spritesheet("/spritesheet.png");
-		player = sheet.getSprite(0, 0, 16, 16);
+		player = new BufferedImage[4];
+		//player[0] = sheet.getSprite(0, 0, 16, 16);
+		//player[1] = sheet.getSprite(16, 0, 16, 16);
+		player[0] = sheet.getSprite(0, 16, 16, 16);
+		player[1] = sheet.getSprite(16, 16, 16, 16);
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		initFrame();
 		image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
@@ -65,7 +73,14 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	public void tick() {
-		
+		frames++;
+		if(frames > maxFrames) {
+			frames = 0;
+			curAnimation++;
+			if(curAnimation >= maxAnimation) {
+				curAnimation = 0;
+			}
+		}
 	}
 	
 	public void render() {
@@ -89,7 +104,9 @@ public class Game extends Canvas implements Runnable {
 		g.drawString("Olá", 20, 20);
 		
 		*/
-		g.drawImage(player, 20, 20, null);
+		Graphics2D g2 = (Graphics2D) g;
+		// g2.rotate(Math.toRadians(90),20,20);
+		g2.drawImage(player[curAnimation], 20, 20, null);
 		g.dispose();
 		g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
