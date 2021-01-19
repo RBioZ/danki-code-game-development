@@ -21,7 +21,12 @@ public class Game extends Canvas implements Runnable {
 	
 	private BufferedImage image;
 	
+	private Spritesheet sheet;
+	private BufferedImage player;
+	
 	public Game() {
+		sheet = new Spritesheet("/spritesheet.png");
+		player = sheet.getSprite(0, 0, 16, 16);
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		initFrame();
 		image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
@@ -75,6 +80,7 @@ public class Game extends Canvas implements Runnable {
 		g.setColor(new Color(19,19,19));
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
+		/*
 		g.setColor(Color.RED);
 		g.fillOval(30, 30, 30, 30);
 		
@@ -82,6 +88,9 @@ public class Game extends Canvas implements Runnable {
 		g.setColor(Color.WHITE);
 		g.drawString("Olá", 20, 20);
 		
+		*/
+		g.drawImage(player, 20, 20, null);
+		g.dispose();
 		g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
 		bs.show();
