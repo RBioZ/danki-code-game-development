@@ -12,11 +12,11 @@ public class Enemy {
 		this.x = x;
 		this.y = y;
 		this.width = 40;
-		this.height = 10;
+		this.height = 5;
 	}
 	
 	public void tick() {
-		x += Game.ball.x - x;
+		x += (Game.ball.x - x - 6) * 0.07;
 	}
 	
 	public void render(Graphics g) {

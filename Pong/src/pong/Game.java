@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 public class Game extends Canvas implements Runnable, KeyListener {
 	
 	private static final long serialVersionUID = 1L;
-	public static int WIDTH = 240;
+	public static int WIDTH = 160;
 	public static int HEIGHT = 120;
 	public static int SCALE = 3;
 	
@@ -27,7 +27,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	public Game() {
 		this.setPreferredSize(new Dimension(SCALE * WIDTH,SCALE * HEIGHT));
 		this.addKeyListener(this);
-		player = new Player(100, HEIGHT - 10);
+		player = new Player(100, HEIGHT - 5);
 		enemy = new Enemy(100,0);
 		ball = new Ball(100, HEIGHT/2 - 1);
 	}

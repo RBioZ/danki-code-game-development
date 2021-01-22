@@ -12,7 +12,7 @@ public class Player {
 		this.x = x;
 		this.y = y;
 		width = 40;
-		height = 10;
+		height = 5;
 	}
 	
 	public void tick() {
