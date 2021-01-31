@@ -3,7 +3,14 @@ package com.rbioz.entities;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import com.rbioz.main.Game;
+
 public class Entity {
+	
+	public static BufferedImage LIFEPACK_EN = Game.spritesheet.getSprite(0, 48, 16, 16);
+	public static BufferedImage WEAPON_EN = Game.spritesheet.getSprite(32, 48, 16, 16);
+	public static BufferedImage BULLET_EN = Game.spritesheet.getSprite(16, 48, 16, 16);
+	public static BufferedImage ENEMY_EN = Game.spritesheet.getSprite(48, 48, 16, 16);
 	
 	protected double x;
 	protected double y;
