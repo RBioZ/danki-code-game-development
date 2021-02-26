@@ -135,7 +135,6 @@ public class Game extends Canvas implements Runnable, KeyListener {
 			}
 			
 			if(System.currentTimeMillis() - timer >= 1000) {
-				System.out.println("FPS: " + frames);
 				frames = 0;
 				timer += 1000;
 			}
@@ -155,20 +154,16 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D ) {
-			System.out.println("RIGHT");
 			player.right = true;
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A ) {
-			System.out.println("LEFT");
 			player.left = true;
 		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W ) {
-			System.out.println("UP");
 			player.up = true;
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S ) {
-			System.out.println("DOWN");
 			player.down = true;
 		}
 	}
@@ -176,20 +171,16 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D ) {
-			System.out.println("RIGHT");
 			player.right = false;
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A ) {
-			System.out.println("LEFT");
 			player.left = false;
 		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W ) {
-			System.out.println("UP");
 			player.up = false;
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S ) {
-			System.out.println("DOWN");
 			player.down = false;
 		}
 		

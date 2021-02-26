@@ -15,8 +15,9 @@ import com.rbioz.main.Game;
 
 public class World {
 	
-	private Tile[] tiles;
+	public static Tile[] tiles;
 	public static int WIDTH, HEIGHT;
+	public static final int TILE_SIZE = 16;
 
 	public World(String path) {
 		try {
@@ -37,7 +38,7 @@ public class World {
 					}
 					else if(pixelAtual == 0xFFFFFFFF) {
 						// Parede
-						tiles[xx + (yy * WIDTH)] = new FloorTile(xx * 16, yy * 16, Tile.TILE_WALL);
+						tiles[xx + (yy * WIDTH)] = new WallTile(xx * 16, yy * 16, Tile.TILE_WALL);
 					}
 					else if(pixelAtual == 0xFF00FFFF) {
 						// Player
@@ -68,6 +69,26 @@ public class World {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static boolean isFree(int xnext, int ynext) {
+		int x1 = xnext / TILE_SIZE;
+		int y1 = ynext / TILE_SIZE;
+		
+		int x2 = (xnext + TILE_SIZE - 1) / TILE_SIZE;
+		int y2 = ynext / TILE_SIZE;
+		
+		int x3 = xnext / TILE_SIZE;
+		int y3 = (ynext + TILE_SIZE - 1)  / TILE_SIZE;
+		
+		int x4 = (xnext + TILE_SIZE - 1) / TILE_SIZE;
+		int y4 = (ynext + TILE_SIZE - 1)  / TILE_SIZE;
+		
+		return !((tiles[x1 + (y1 * World.WIDTH)] instanceof WallTile) ||
+				 (tiles[x2 + (y2 * World.WIDTH)] instanceof WallTile) ||
+				 (tiles[x3 + (y3 * World.WIDTH)] instanceof WallTile) ||
+				 (tiles[x4 + (y4 * World.WIDTH)] instanceof WallTile)
+				);
 	}
 	
 	public void render(Graphics g) {
